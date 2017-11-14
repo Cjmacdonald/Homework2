@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package homework2;
 
+package Homework2;
+
+import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,41 +34,48 @@ public class Homework2Test {
     public void tearDown() {
     }
 
-    /**
-     * Test of main method, of class Homework2.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Homework2.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
-     * Test of In method, of class Homework2.
+     * Test of Input method, of class Homework2.
      */
     @Test
-    public void testIn() {
-        System.out.println("In");
-        int expResult = 0;
-        int result = Homework2.In();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    public void testGetNumbs_Scanner() {
+        Homework2 app = new Homework2();
+        Scanner in = new Scanner("11 15");
+        int[] terms = new int[2];
 
-    /**
-     * Test of Out method, of class Homework2.
-     */
-    @Test
-    public void testOut() {
-        System.out.println("Out");
-        int output = 0;
-        Homework2.Out(output);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        terms = app.GetNumbs(in);
+        assertEquals(terms[0], 11);
+        assertEquals(terms[1], 15);
     }
     
+    @Test
+    public void testCheckRange() {
+        Homework2 app = new Homework2();
+        assertEquals(false,app.checkRange(-1001));
+        assertEquals(true,app.checkRange(-1000));
+        assertEquals(true,app.checkRange(1000));
+        assertEquals(false,app.checkRange(1001));
+        assertEquals(true,app.checkRange(100));
+    }  
+    
+    @Test
+    public void testIsLess() {
+        Homework2 app = new Homework2();
+        assertEquals(false,app.isLess(4, 3));
+        assertEquals(true,app.isLess(11, 15));
+    } 
+    
+    @Test
+    public void testMaths()
+    {
+        Homework2 app = new Homework2();
+        int r1, r2, s;
+        r1 = 4;
+        s = 3;
+        r2 = 2;
+        
+        assertEquals(r2, app.maths(r1, s));
+       
+    }
 }
